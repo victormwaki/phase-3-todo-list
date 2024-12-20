@@ -11,28 +11,28 @@ app = typer.Typer()
 
 @app.command(short_help='adds an item')
 def add(task: str, category: str):
-    typer.echo(f"adding {task}, {category}")
+    typer.echo(f"Adding {task}, {category}")
     todo = Todo(task, category)
     insert_todo(todo)
     show()
 
 @app.command()
 def delete(position: int):
-    typer.echo(f"deleting {position}")
+    typer.echo(f"Deleting {position}")
     # indices in UI begin at 1, but in database at 0
-    delete_todo(position-1)
+    delete_todo(position - 1)
     show()
 
 @app.command()
 def update(position: int, task: str = None, category: str = None):
-    typer.echo(f"updating {position}")
-    update_todo(position-1, task, category)
+    typer.echo(f"Updating {position}")
+    update_todo(position - 1, task, category)
     show()
 
 @app.command()
 def complete(position: int):
-    typer.echo(f"complete {position}")
-    complete_todo(position-1)
+    typer.echo(f"Completing {position}")
+    complete_todo(position - 1)
     show()
 
 @app.command()
